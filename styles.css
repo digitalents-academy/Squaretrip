@@ -1,0 +1,11 @@
+body {
+  background-color: rgb(240, 232, 222);
+}
+.moveBtn {
+  background-color: rgb(12, 184, 184);
+  color: rgb(239, 245, 245);
+  border-radius: 10px;
+}
+.moveBtn:hover {
+  cursor: crosshair;
+}

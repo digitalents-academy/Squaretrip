@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SQUARE TRIP</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      canvas {
+        border: 4px solid rgb(224, 112, 112);
+      }
+    </style>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <section class="preview"></section>
+    <button id="moveBtn" class="moveBtn">TRIP OUT DUDE</button>
+    <canvas width="1400px" height="900px"> </canvas>
+    <h1 class="counter-display">0</h1>
+  </body>
+  <script>
+    let canvas = document.querySelector("canvas");
+    let ctx = canvas.getContext("2d");
+    let button = document.getElementById("moveBtn");
+    let counterDisplayElem = document.querySelector(".counter-display");
+    let count = 0;
+    button.addEventListener("click", tripOut);
+    onkeypress = function draw() {
+      let x = Math.floor(Math.random() * 1400);
+      let y = Math.floor(Math.random() * 900);
+      let width = Math.floor(Math.random() * 450);
+      let height = Math.floor(Math.random() * 450);
+      let color = "blue";
+      let r = Math.floor(Math.random() * 256);
+      // randomize green range
+      let g = Math.floor(Math.random() * 256);
+      // randomize blue range
+      let b = Math.floor(Math.random() * 256);
+      // randomize opacity
+      let a = Math.random().toFixed(1);
+      // update background based on random RGBA color values
+      count++;
+      counterDisplayElem.innerHTML = count;
+      ctx.clearRect(x, y, width, height);
+      ctx.beginPath();
+      ctx.shadowColor = "red";
+      ctx.shadowBlur = 35;
+      ctx.fillStyle = "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
+      ctx.fillRect(x, y, width, height);
+    };
+    onclick = function drawToo() {
+      let x = Math.floor(Math.random() * 1400);
+      let y = Math.floor(Math.random() * 900);
+      let width = Math.floor(Math.random() * 450);
+      let height = Math.floor(Math.random() * 450);
+      let r = Math.floor(Math.random() * 256);
+      // randomize green range
+      let g = Math.floor(Math.random() * 256);
+      // randomize blue range
+      let b = Math.floor(Math.random() * 256);
+      // randomize opacity
+      let a = Math.random().toFixed(1);
+      // update background based on random RGBA color values
+      let gradient = ctx.createLinearGradient(
+        Math.floor(Math.random() * 256),
+        Math.floor(Math.random() * 256),
+        Math.floor(Math.random() * 256),
+        Math.floor(Math.random() * 256)
+      );
+      count++;
+      counterDisplayElem.innerHTML = count;
+      gradient.addColorStop(
+        0,
+        "rgba(" + r + ", " + g + ", " + b + ", " + a + ")"
+      );
+      gradient.addColorStop(
+        0.5,
+        "rgba(" + r + ", " + g + ", " + b + ", " + a + ")"
+      );
+      gradient.addColorStop(
+        1,
+        "rgba(" + r + ", " + g + ", " + b + ", " + a + ")"
+      );
+
+      ctx.fillStyle = gradient;
+      ctx.fillRect(x, y, width, height);
+    };
+    function tripOut() {
+      let r = Math.floor(Math.random() * 256);
+      // randomize green range
+      let g = Math.floor(Math.random() * 256);
+      // randomize blue range
+      let b = Math.floor(Math.random() * 256);
+      // randomize opacity
+      let a = Math.random().toFixed(1);
+      document.body.style.backgroundColor =
+        "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
+    }
+
+    const section = document.querySelector("section");
+  </script>
+</html>
